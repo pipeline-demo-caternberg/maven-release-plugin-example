@@ -116,6 +116,7 @@ mvn -s settings-jfrog.xml clean deploy
 # Links
 * https://thihenos.medium.com/maven-release-plugin-a-simple-example-of-package-management-9926506acfb9
 * https://danielflower.github.io/multi-module-maven-release-plugin/ssh-authentication.html
+* https://maven.apache.org/maven-release/maven-release-plugin/
 * https://www.mojohaus.org/development/performing-a-release.html
 * http://www.mojohaus.org/build-helper-maven-plugin/
 * https://medium.com/@nanditasahu031/jenkins-pipeline-jfrog-artifactory-and-jenkins-integration-4fed3fc8d556
