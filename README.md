@@ -11,8 +11,6 @@
 mvn release:clean
 ```
 
-
-
 ### Preparing the Release
 
 1. Perform some checks � there should be no uncommitted changes and the project should depend on no SNAPSHOT dependencies
@@ -29,16 +27,6 @@ mvn release:clean
 
 7. Commit and push the changes
 
-
-### Dry Run
-
-Allows you to run all operations in `release:prepare` goal except for actual commits into SCM.
-
-```
-mvn release:prepare -DdryRun=true
-```
-
-
 ### Performing the Release
 
 1. Checkout release tag from SCM
@@ -48,43 +36,13 @@ mvn release:prepare -DdryRun=true
 3. Relies on the output of the Prepare step � the `release.properties`.
 
 
+## Cleaning, Preparing and Performing the release
 ```
-mvn release:prepare
-```
-
-### Hosted Maven2 repository in Nexus
-
-Create maven2 hosted repository in Nexus, for us it's `api-release`
-
-
-### Upload artifact in Nexus from command line:
-
-```
-curl -v --user admin:admin123 --upload-file <filename> http://localhost:8081/repository/<repository-name>/<filename>
+mvn   release:clean release:prepare  release:perform  -DreleaseVersion=0.1 -DdevelopmentVersion=0.2-SNAPSHOT  -s settings-jfrog.xml
+## DryRun: mvn -s settings-jfrog.xml release:prepare -DdryRun=true
 ```
 
 
-### Configure the credentials for the nexus-releases server in the global `settings.xml` (%USER_HOME%/.m2/settings.xml):
-
-
-```
-<servers>
-   <server>
-      <id>nexus-releases</id>
-      <username>admin</username>
-      <password>admin123</password>
-   </server>
-</servers>
-```
-
-### Cleaning, Preparing and Performing the release
-
-
-```
-mvn -s settings-jfrog.xml release:clean release:prepare release:perform -DreleaseVersion=0.1 -DdevelopmentVersion=0.2-SNAPSHOT
-```
-
-Reference: http://www.baeldung.com/maven-release-nexus
 
 # Artifactory
 
@@ -100,9 +58,7 @@ Reference: http://www.baeldung.com/maven-release-nexus
 		</snapshotRepository>
 		<repository>
 			<id>releases</id>
-			<!-- http://localhost:8081/repository/<repository-name> -->
-			<!--<url>http://localhost:8081/repository/api-release</url>-->
-			<url>https://caternberg.jfrog.io/artifactory/libs-releases</url>
+			<url>https://caternberg.jfrog.io/artifactory/libs-release-local</url>
 		</repository>
 	</distributionManagement>
 ```
