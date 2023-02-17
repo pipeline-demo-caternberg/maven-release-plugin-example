@@ -42,6 +42,7 @@
             <id>releases</id>
             <!-- http://localhost:8081/repository/<repository-name> -->
             <!--<url>http://localhost:8081/repository/api-release</url>-->
+            <name>a0qyc6tley14q-artifactory-primary-0-releases</name>
             <url>https://caternberg.jfrog.io/artifactory/libs-releases</url>
         </repository>
     </distributionManagement>
