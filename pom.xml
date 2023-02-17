@@ -3,18 +3,35 @@
 	<groupId>com.test</groupId>
 	<artifactId>maven-release-plugin-example</artifactId>
 	<version>0.2-SNAPSHOT</version>
+	<!--see https://maven.apache.org/scm/maven-scm-plugin/examples/bootstrapping-with-pom.html -->
+	<!-- https://maven.apache.org/scm/git.html -->
+	<!-- https://maven.apache.org/scm/maven-scm-plugin/examples/bootstrapping-with-pom.html#configuring-authentication -->
+	<!-- This will be required by the mvn release plugin to tag and pull the code-->
 	<scm>
-		<url>https://github.com/arpitaggarwal/maven-release-plugin-example</url>
+		<!--<url>https://github.com/arpitaggarwal/maven-release-plugin-example</url>
 		<connection>scm:git:https://github.com/arpitaggarwal/maven-release-plugin-example.git</connection>
-      <tag>HEAD</tag>
+		<tag>HEAD</tag>-->
+		<url>https://github.com/pipeline-demo-caternberg/maven-release-plugin-example</url>
+		<connection>scm:git:git@github.com:pipeline-demo-caternberg/maven-release-plugin-example.git</connection>
+		<developerConnection>scm:git:git@github.com:pipeline-demo-caternberg/maven-release-plugin-example.git</developerConnection>
+		<!-- see http://www.mojohaus.org/build-helper-maven-plugin/
+		The Build Helper Plugin will update the tag
+		-->
+		<tag>@{project.version}</tag>
   </scm>
 	
 	<!-- Repository Information -->
 	<distributionManagement>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>a0qyc6tley14q-artifactory-primary-0-snapshots</name>
+			<url>https://caternberg.jfrog.io/artifactory/libs-snapshot</url>
+		</snapshotRepository>
 		<repository>
-			<id>nexus-releases</id>
+			<id>releases</id>
 			<!-- http://localhost:8081/repository/<repository-name> -->
-			<url>http://localhost:8081/repository/api-release</url>
+			<!--<url>http://localhost:8081/repository/api-release</url>-->
+			<url>https://caternberg.jfrog.io/artifactory/libs-releases</url>
 		</repository>
 	</distributionManagement>
 	<profiles>

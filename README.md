@@ -15,9 +15,9 @@ mvn release:clean
 
 ### Preparing the Release
 
-1. Perform some checks – there should be no uncommitted changes and the project should depend on no SNAPSHOT dependencies
+1. Perform some checks ï¿½ there should be no uncommitted changes and the project should depend on no SNAPSHOT dependencies
 
-2. Change the version of the project in the pom file to a full release number (remove SNAPSHOT suffix) – in our example – 0.1
+2. Change the version of the project in the pom file to a full release number (remove SNAPSHOT suffix) ï¿½ in our example ï¿½ 0.1
 
 3. Run the project test suites
 
@@ -25,7 +25,7 @@ mvn release:clean
 
 5. Create the tag out of this non-SNAPSHOT versioned code
 
-6. Increase the version of the project in the pom – in our example – 0.2-SNAPSHOT
+6. Increase the version of the project in the pom ï¿½ in our example ï¿½ 0.2-SNAPSHOT
 
 7. Commit and push the changes
 
@@ -45,7 +45,7 @@ mvn release:prepare -DdryRun=true
 
 2. Build and deploy released code
 
-3. Relies on the output of the Prepare step – the `release.properties`.
+3. Relies on the output of the Prepare step ï¿½ the `release.properties`.
 
 
 ```
@@ -85,3 +85,43 @@ mvn release:clean release:prepare release:perform -DreleaseVersion=0.1 -Ddevelop
 ```
 
 Reference: http://www.baeldung.com/maven-release-nexus
+
+# Artifactory
+
+## deploy 
+
+```
+	<!-- Repository Information -->
+	<distributionManagement>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>a0qyc6tley14q-artifactory-primary-0-snapshots</name>
+			<url>https://caternberg.jfrog.io/artifactory/libs-snapshot</url>
+		</snapshotRepository>
+		<repository>
+			<id>releases</id>
+			<!-- http://localhost:8081/repository/<repository-name> -->
+			<!--<url>http://localhost:8081/repository/api-release</url>-->
+			<url>https://caternberg.jfrog.io/artifactory/libs-releases</url>
+		</repository>
+	</distributionManagement>
+```
+
+add `distributionManagement`  to `pom.xml` and deploy
+
+```
+mvn -s settings-jfrog.xml clean deploy
+```
+
+# Links
+* https://thihenos.medium.com/maven-release-plugin-a-simple-example-of-package-management-9926506acfb9
+* https://danielflower.github.io/multi-module-maven-release-plugin/ssh-authentication.html
+* https://www.mojohaus.org/development/performing-a-release.html
+* http://www.mojohaus.org/build-helper-maven-plugin/
+* https://medium.com/@nanditasahu031/jenkins-pipeline-jfrog-artifactory-and-jenkins-integration-4fed3fc8d556
+* https://www.jfrog.com/confluence/display/JFROG/Jenkins+Artifactory+Plugin+-+Release+Management
+* https://www.jfrog.com/confluence/display/JFROG/Configuring+Jenkins+Artifactory+Plug-in
+* https://www.jfrog.com/confluence/display/JFROG/JFrog+Platform+REST+API#JFrogPlatformRESTAPI-WorkingwiththeJFrogPlatformontheCloud
+* https://www.jfrog.com/confluence/display/JFROG/Jenkins+Artifactory+Plugin+-+Release+Management#JenkinsArtifactoryPluginReleaseManagement-JenkinsArtifactoryReleaseStagingAPI
+* https://www.jfrog.com/confluence/display/JFROG/Using+Jenkins+With+Pipelines
+* https://maven.apache.org/scm/maven-scm-plugin/usage.html
