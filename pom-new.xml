@@ -31,7 +31,20 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
+    <!-- Repository Information -->
+    <distributionManagement>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>a0qyc6tley14q-artifactory-primary-0-snapshots</name>
+            <url>https://caternberg.jfrog.io/artifactory/libs-snapshot</url>
+        </snapshotRepository>
+        <repository>
+            <id>releases</id>
+            <!-- http://localhost:8081/repository/<repository-name> -->
+            <!--<url>http://localhost:8081/repository/api-release</url>-->
+            <url>https://caternberg.jfrog.io/artifactory/libs-releases</url>
+        </repository>
+    </distributionManagement>
     <build>
         <plugins>
             <plugin>
