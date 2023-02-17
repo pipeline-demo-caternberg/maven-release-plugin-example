@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.test</groupId>
     <artifactId>maven-release-plugin-example</artifactId>
-    <version>0.7-SNAPSHOT</version>
+    <version>0.7</version>
     <packaging>jar</packaging>
     <name>maven-release-plugin-example</name>
 
@@ -21,7 +21,7 @@
         <!-- see http://www.mojohaus.org/build-helper-maven-plugin/
         The Build Helper Plugin will update the tag
         -->
-        <tag>v${project.version}</tag>
+        <tag>v0.7-SNAPSHOT</tag>
     </scm>
 
     <properties>
