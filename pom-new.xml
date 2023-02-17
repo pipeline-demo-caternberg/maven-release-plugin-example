@@ -3,9 +3,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.test</groupId>
     <artifactId>maven-release-plugin-example</artifactId>
-    <version>0.1</version>
+    <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>PROJECTO</name>
+    <name>maven-release-plugin-example</name>
 
     <!--see https://maven.apache.org/scm/maven-scm-plugin/examples/bootstrapping-with-pom.html -->
     <!-- https://maven.apache.org/scm/git.html -->
