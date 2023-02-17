@@ -81,7 +81,7 @@ curl -v --user admin:admin123 --upload-file <filename> http://localhost:8081/rep
 
 
 ```
-mvn release:clean release:prepare release:perform -DreleaseVersion=0.1 -DdevelopmentVersion=0.2-SNAPSHOT
+mvn -s settings-jfrog.xml release:clean release:prepare release:perform -DreleaseVersion=0.1 -DdevelopmentVersion=0.2-SNAPSHOT
 ```
 
 Reference: http://www.baeldung.com/maven-release-nexus
