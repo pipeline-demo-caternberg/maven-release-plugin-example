@@ -1,7 +1,14 @@
 # maven-release-plugin-example
 
+This is an example on how to use the maven release plugin in conjunction with Artifactory.
+To get it working: 
+```
+mv RENAMEME_settings-jfrog.xml settings-jfrog.xml
+#and adjust your jfrog values 
+```
 
-### Cleaning a Release
+
+## Cleaning a Release
 
 1. Delete the release descriptor (release.properties)
 
@@ -11,11 +18,11 @@
 mvn release:clean
 ```
 
-### Preparing the Release
+## Preparing the Release
 
-1. Perform some checks � there should be no uncommitted changes and the project should depend on no SNAPSHOT dependencies
+1. Perform some checks there should be no uncommitted changes and the project should depend on no SNAPSHOT dependencies
 
-2. Change the version of the project in the pom file to a full release number (remove SNAPSHOT suffix) � in our example � 0.1
+2. Change the version of the project in the pom file to a full release number (remove SNAPSHOT suffix) in our example 0.1
 
 3. Run the project test suites
 
@@ -23,47 +30,29 @@ mvn release:clean
 
 5. Create the tag out of this non-SNAPSHOT versioned code
 
-6. Increase the version of the project in the pom � in our example � 0.2-SNAPSHOT
+6. Increase the version of the project in the pom in our example 0.2-SNAPSHOT
 
 7. Commit and push the changes
 
-### Performing the Release
+## Performing the Release
 
 1. Checkout release tag from SCM
 
 2. Build and deploy released code
 
-3. Relies on the output of the Prepare step � the `release.properties`.
+3. Relies on the output of the Prepare step the `release.properties`.
 
 
 ## Cleaning, Preparing and Performing the release
 ```
-mvn   release:clean release:prepare  release:perform  -DreleaseVersion=0.1 -DdevelopmentVersion=0.2-SNAPSHOT  -s settings-jfrog.xml
+mvn release:clean release:prepare  release:perform  -DreleaseVersion=0.1 -DdevelopmentVersion=0.2-SNAPSHOT  -s settings-jfrog.xml
 ## DryRun: mvn -s settings-jfrog.xml release:prepare -DdryRun=true
 ```
 
+## Submodules
+Maven submodules are not in this example
 
-
-# Artifactory
-
-## deploy 
-
-```
-	<!-- Repository Information -->
-	<distributionManagement>
-		<snapshotRepository>
-			<id>snapshots</id>
-			<name>a0qyc6tley14q-artifactory-primary-0-snapshots</name>
-			<url>https://caternberg.jfrog.io/artifactory/libs-snapshot</url>
-		</snapshotRepository>
-		<repository>
-			<id>releases</id>
-			<url>https://caternberg.jfrog.io/artifactory/libs-release-local</url>
-		</repository>
-	</distributionManagement>
-```
-
-add `distributionManagement`  to `pom.xml` and deploy
+# Deploy to Artifactory 
 
 ```
 mvn -s settings-jfrog.xml clean deploy
